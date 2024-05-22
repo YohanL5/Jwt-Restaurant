@@ -4,18 +4,24 @@ spring:
   application:
     name: cerberus
   datasource:
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://localhost:4407/cerberus
+    username: cerberus
+    password: Password@123
     driver-class-name: com.mysql.cj.jdbc.Driver
   data:
     redis:
-      host: ${REDIS_HOSTNAME}
-      port: ${REDIS_PORT}
-      password: ${REDIS_PASSWORD}
+      host: localhost
+      port: 7480
+      password: Password@123
+    mongodb:
+      uri: mongodb://localhost:27017/RestaurantDB
+      host: localhost
+      port: 27017
+      database: RestaurantDB
   jackson:
     deserialization:
       fail-on-unknown-properties: true
+
     
 com:
   behl:
@@ -32,3 +38,4 @@ com:
         api-version: 1.0.0
         title: Cerberus
         description: Java Backend application using Spring-security to implement JWT based Authentication and Authorization
+
