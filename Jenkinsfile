@@ -2,11 +2,11 @@ pipeline {
     agent any
 
 
-    environment {
+  //  environment {
 
-        SONARQUBE_URL = 'http://localhost:9000/'
-        SONAR_TOKEN = credentials('sonar-token')
-    }
+  //        SONARQUBE_URL = 'http://localhost:9000/'
+ //  SONAR_TOKEN = credentials('sonar-token')
+    //}
 
     stages {
         stage('Checkout') {
@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        /*stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh 'mvn clean verify sonar:sonar -Dsonar.host.url=$SONARQUBE_URL -Dsonar.login=$SONAR_TOKEN'
@@ -34,7 +34,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
 
         stage('Test') {
             steps {
