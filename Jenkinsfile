@@ -11,19 +11,19 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn package'
+                bat 'mvn package'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'mvn spring-boot:run'
+                bat 'mvn spring-boot:run'
             }
         }
     }
