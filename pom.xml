@@ -18,7 +18,7 @@
 	<description>Java Backend application using Spring-security to implement JWT based Authentication and Authorization </description>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 		<jjwt.version>0.12.5</jjwt.version>
 		<springdoc.version>2.3.0</springdoc.version>
 	</properties>
@@ -98,6 +98,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>3.1.11</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
