@@ -5,6 +5,10 @@ pipeline {
             jdk 'JAVA_HOME'
         }
 
+    environment {
+            DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+       }
+
     stages {
         stage('Checkout') {
             steps {
@@ -12,22 +16,32 @@ pipeline {
             }
         }
 
+        stage('Build') {
+                    steps {
+
+                        bat 'mvn clean install'
+                    }
+        }
+
+
+
         stage('Test') {
             steps {
                 bat 'mvn test'
             }
         }
 
-        stage('Package') {
-            steps {
-                bat 'mvn package'
-            }
-        }
+         stage('Deploy with Docker Compose') {
+                    steps {
+                        script {
+                            sh """
+                                docker-compose -f ${DOCKER_COMPOSE_FILE} down
+                                docker-compose -f ${DOCKER_COMPOSE_FILE} up --build -d
+                            """
+                        }
+                    }
+         }
 
-        stage('Deploy') {
-            steps {
-                bat 'mvn spring-boot:run'
-            }
-        }
+
     }
 }
