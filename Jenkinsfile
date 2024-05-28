@@ -34,7 +34,7 @@ pipeline {
          stage('Deploy with Docker Compose') {
                     steps {
                         script {
-                            sh """
+                            bat """
                                 docker-compose -f ${DOCKER_COMPOSE_FILE} down
                                 docker-compose -f ${DOCKER_COMPOSE_FILE} up --build -d
                             """
